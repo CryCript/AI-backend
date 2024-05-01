@@ -11,13 +11,28 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { EnumUserAccessWeddingInvitation } from "./EnumUserAccessWeddingInvitation";
+import { IsEnum, IsOptional, ValidateNested } from "class-validator";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
+import { PaymentListRelationFilter } from "../../payment/base/PaymentListRelationFilter";
+import { EnumUserStatus } from "./EnumUserStatus";
+import { WeddingInvitationListRelationFilter } from "../../weddingInvitation/base/WeddingInvitationListRelationFilter";
 
 @InputType()
 class UserWhereInput {
+  @ApiProperty({
+    required: false,
+    enum: EnumUserAccessWeddingInvitation,
+  })
+  @IsEnum(EnumUserAccessWeddingInvitation)
+  @IsOptional()
+  @Field(() => EnumUserAccessWeddingInvitation, {
+    nullable: true,
+  })
+  accessWeddingInvitation?: "Yes" | "No";
+
   @ApiProperty({
     required: false,
     type: StringNullableFilter,
@@ -64,6 +79,40 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => PaymentListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => PaymentListRelationFilter)
+  @IsOptional()
+  @Field(() => PaymentListRelationFilter, {
+    nullable: true,
+  })
+  payments?: PaymentListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  phone?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserStatus,
+  })
+  @IsEnum(EnumUserStatus)
+  @IsOptional()
+  @Field(() => EnumUserStatus, {
+    nullable: true,
+  })
+  status?: "Register" | "Active" | "Nonactive";
+
+  @ApiProperty({
+    required: false,
     type: StringFilter,
   })
   @Type(() => StringFilter)
@@ -72,6 +121,18 @@ class UserWhereInput {
     nullable: true,
   })
   username?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => WeddingInvitationListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => WeddingInvitationListRelationFilter)
+  @IsOptional()
+  @Field(() => WeddingInvitationListRelationFilter, {
+    nullable: true,
+  })
+  weddingInvitations?: WeddingInvitationListRelationFilter;
 }
 
 export { UserWhereInput as UserWhereInput };

@@ -11,13 +11,29 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional } from "class-validator";
+import { EnumUserAccessWeddingInvitation } from "./EnumUserAccessWeddingInvitation";
+import { IsEnum, IsOptional, IsString, ValidateNested } from "class-validator";
+import { PaymentCreateNestedManyWithoutUsersInput } from "./PaymentCreateNestedManyWithoutUsersInput";
+import { Type } from "class-transformer";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
+import { EnumUserStatus } from "./EnumUserStatus";
+import { WeddingInvitationCreateNestedManyWithoutUsersInput } from "./WeddingInvitationCreateNestedManyWithoutUsersInput";
 
 @InputType()
 class UserCreateInput {
+  @ApiProperty({
+    required: false,
+    enum: EnumUserAccessWeddingInvitation,
+  })
+  @IsEnum(EnumUserAccessWeddingInvitation)
+  @IsOptional()
+  @Field(() => EnumUserAccessWeddingInvitation, {
+    nullable: true,
+  })
+  accessWeddingInvitation?: "Yes" | "No" | null;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -60,11 +76,45 @@ class UserCreateInput {
   password!: string;
 
   @ApiProperty({
+    required: false,
+    type: () => PaymentCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => PaymentCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => PaymentCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  payments?: PaymentCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  phone?: string | null;
+
+  @ApiProperty({
     required: true,
   })
   @IsJSONValue()
   @Field(() => GraphQLJSON)
   roles!: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserStatus,
+  })
+  @IsEnum(EnumUserStatus)
+  @IsOptional()
+  @Field(() => EnumUserStatus, {
+    nullable: true,
+  })
+  status?: "Register" | "Active" | "Nonactive" | null;
 
   @ApiProperty({
     required: true,
@@ -73,6 +123,18 @@ class UserCreateInput {
   @IsString()
   @Field(() => String)
   username!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => WeddingInvitationCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => WeddingInvitationCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => WeddingInvitationCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  weddingInvitations?: WeddingInvitationCreateNestedManyWithoutUsersInput;
 }
 
 export { UserCreateInput as UserCreateInput };

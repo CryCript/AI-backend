@@ -8,13 +8,86 @@ generator client {
 }
 
 model User {
+  accessWeddingInvitation EnumUserAccessWeddingInvitation?
+  createdAt               DateTime                         @default(now())
+  email                   String?                          @unique
+  firstName               String?
+  id                      String                           @id @default(auto()) @map("_id") @db.ObjectId
+  lastName                String?
+  password                String
+  payments                Payment[]
+  phone                   String?
+  roles                   Json
+  status                  EnumUserStatus?
+  updatedAt               DateTime                         @updatedAt
+  username                String                           @unique
+  weddingInvitations      WeddingInvitation[]
+}
+
+model WeddingInvitation {
+  bride                     Json?
+  createdAt                 DateTime                   @default(now())
+  events                    Json?
+  galleries                 Json?
+  gifts                     Json?
+  groom                     Json?
+  id                        String                     @id @default(auto()) @map("_id") @db.ObjectId
+  invites                   Json?
+  moments                   Json?
+  quotes                    Json?
+  updatedAt                 DateTime                   @updatedAt
+  userId                    User                       @relation(fields: [userIdId], references: [id])
+  userIdId                  String                     @db.ObjectId
+  video                     String?
+  weddingInvitationComments WeddingInvitationComment[]
+  weddingInvitationShares   WeddingInvitationShare[]
+}
+
+model WeddingInvitationShare {
+  createdAt   DateTime           @default(now())
+  id          String             @id @default(auto()) @map("_id") @db.ObjectId
+  institution String?
+  link        String?
+  name        String?
+  open        String?
+  updatedAt   DateTime           @updatedAt
+  view        Int?
+  weddingId   WeddingInvitation? @relation(fields: [ID], references: [id])
+  ID          String?            @db.ObjectId
+}
+
+model WeddingInvitationComment {
+  address     String?
+  comment     String?
+  createdAt   DateTime           @default(now())
+  email       String?
+  id          String             @id @default(auto()) @map("_id") @db.ObjectId
+  institution String?
+  link        String?
+  moment      Json?
+  name        String?
+  phone       String?
+  present     String?
+  updatedAt   DateTime           @updatedAt
+  weddingId   WeddingInvitation? @relation(fields: [weddingIdId], references: [id])
+  weddingIdId String?            @db.ObjectId
+}
+
+model Payment {
   createdAt DateTime @default(now())
-  email     String?  @unique
-  firstName String?
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  lastName  String?
-  password  String
-  roles     Json
   updatedAt DateTime @updatedAt
-  username  String   @unique
+  userId    User?    @relation(fields: [userIdId], references: [id])
+  userIdId  String?  @db.ObjectId
+}
+
+enum EnumUserAccessWeddingInvitation {
+  Yes
+  No
+}
+
+enum EnumUserStatus {
+  Register
+  Active
+  Nonactive
 }

@@ -26,6 +26,12 @@ import { User } from "./User";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserUpdateInput } from "./UserUpdateInput";
+import { PaymentFindManyArgs } from "../../payment/base/PaymentFindManyArgs";
+import { Payment } from "../../payment/base/Payment";
+import { PaymentWhereUniqueInput } from "../../payment/base/PaymentWhereUniqueInput";
+import { WeddingInvitationFindManyArgs } from "../../weddingInvitation/base/WeddingInvitationFindManyArgs";
+import { WeddingInvitation } from "../../weddingInvitation/base/WeddingInvitation";
+import { WeddingInvitationWhereUniqueInput } from "../../weddingInvitation/base/WeddingInvitationWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -49,12 +55,15 @@ export class UserControllerBase {
     return await this.service.createUser({
       data: data,
       select: {
+        accessWeddingInvitation: true,
         createdAt: true,
         email: true,
         firstName: true,
         id: true,
         lastName: true,
+        phone: true,
         roles: true,
+        status: true,
         updatedAt: true,
         username: true,
       },
@@ -78,12 +87,15 @@ export class UserControllerBase {
     return this.service.users({
       ...args,
       select: {
+        accessWeddingInvitation: true,
         createdAt: true,
         email: true,
         firstName: true,
         id: true,
         lastName: true,
+        phone: true,
         roles: true,
+        status: true,
         updatedAt: true,
         username: true,
       },
@@ -108,12 +120,15 @@ export class UserControllerBase {
     const result = await this.service.user({
       where: params,
       select: {
+        accessWeddingInvitation: true,
         createdAt: true,
         email: true,
         firstName: true,
         id: true,
         lastName: true,
+        phone: true,
         roles: true,
+        status: true,
         updatedAt: true,
         username: true,
       },
@@ -147,12 +162,15 @@ export class UserControllerBase {
         where: params,
         data: data,
         select: {
+          accessWeddingInvitation: true,
           createdAt: true,
           email: true,
           firstName: true,
           id: true,
           lastName: true,
+          phone: true,
           roles: true,
+          status: true,
           updatedAt: true,
           username: true,
         },
@@ -185,12 +203,15 @@ export class UserControllerBase {
       return await this.service.deleteUser({
         where: params,
         select: {
+          accessWeddingInvitation: true,
           createdAt: true,
           email: true,
           firstName: true,
           id: true,
           lastName: true,
+          phone: true,
           roles: true,
+          status: true,
           updatedAt: true,
           username: true,
         },
@@ -203,5 +224,217 @@ export class UserControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/payments")
+  @ApiNestedQuery(PaymentFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Payment",
+    action: "read",
+    possession: "any",
+  })
+  async findPayments(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Payment[]> {
+    const query = plainToClass(PaymentFindManyArgs, request.query);
+    const results = await this.service.findPayments(params.id, {
+      ...query,
+      select: {
+        createdAt: true,
+        id: true,
+        updatedAt: true,
+
+        userId: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/payments")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectPayments(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: PaymentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      payments: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/payments")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updatePayments(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: PaymentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      payments: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/payments")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectPayments(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: PaymentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      payments: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/weddingInvitations")
+  @ApiNestedQuery(WeddingInvitationFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "WeddingInvitation",
+    action: "read",
+    possession: "any",
+  })
+  async findWeddingInvitations(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<WeddingInvitation[]> {
+    const query = plainToClass(WeddingInvitationFindManyArgs, request.query);
+    const results = await this.service.findWeddingInvitations(params.id, {
+      ...query,
+      select: {
+        bride: true,
+        createdAt: true,
+        events: true,
+        galleries: true,
+        gifts: true,
+        groom: true,
+        id: true,
+        invites: true,
+        moments: true,
+        quotes: true,
+        updatedAt: true,
+
+        userId: {
+          select: {
+            id: true,
+          },
+        },
+
+        video: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/weddingInvitations")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectWeddingInvitations(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: WeddingInvitationWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      weddingInvitations: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/weddingInvitations")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updateWeddingInvitations(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: WeddingInvitationWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      weddingInvitations: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/weddingInvitations")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectWeddingInvitations(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: WeddingInvitationWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      weddingInvitations: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }
