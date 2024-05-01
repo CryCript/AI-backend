@@ -11,14 +11,35 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, IsOptional } from "class-validator";
+import { EnumUserAccessWeddingInvitation } from "./EnumUserAccessWeddingInvitation";
+import {
+  IsEnum,
+  IsOptional,
+  IsDate,
+  IsString,
+  ValidateNested,
+} from "class-validator";
 import { Type } from "class-transformer";
+import { Payment } from "../../payment/base/Payment";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
+import { EnumUserStatus } from "./EnumUserStatus";
+import { WeddingInvitation } from "../../weddingInvitation/base/WeddingInvitation";
 
 @ObjectType()
 class User {
+  @ApiProperty({
+    required: false,
+    enum: EnumUserAccessWeddingInvitation,
+  })
+  @IsEnum(EnumUserAccessWeddingInvitation)
+  @IsOptional()
+  @Field(() => EnumUserAccessWeddingInvitation, {
+    nullable: true,
+  })
+  accessWeddingInvitation?: "Yes" | "No" | null;
+
   @ApiProperty({
     required: true,
   })
@@ -69,11 +90,42 @@ class User {
   lastName!: string | null;
 
   @ApiProperty({
+    required: false,
+    type: () => [Payment],
+  })
+  @ValidateNested()
+  @Type(() => Payment)
+  @IsOptional()
+  payments?: Array<Payment>;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  phone!: string | null;
+
+  @ApiProperty({
     required: true,
   })
   @IsJSONValue()
   @Field(() => GraphQLJSON)
   roles!: JsonValue;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserStatus,
+  })
+  @IsEnum(EnumUserStatus)
+  @IsOptional()
+  @Field(() => EnumUserStatus, {
+    nullable: true,
+  })
+  status?: "Register" | "Active" | "Nonactive" | null;
 
   @ApiProperty({
     required: true,
@@ -90,6 +142,15 @@ class User {
   @IsString()
   @Field(() => String)
   username!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => [WeddingInvitation],
+  })
+  @ValidateNested()
+  @Type(() => WeddingInvitation)
+  @IsOptional()
+  weddingInvitations?: Array<WeddingInvitation>;
 }
 
 export { User as User };

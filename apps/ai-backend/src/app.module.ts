@@ -1,5 +1,9 @@
 import { Module } from "@nestjs/common";
 import { UserModule } from "./user/user.module";
+import { WeddingInvitationModule } from "./weddingInvitation/weddingInvitation.module";
+import { WeddingInvitationShareModule } from "./weddingInvitationShare/weddingInvitationShare.module";
+import { WeddingInvitationCommentModule } from "./weddingInvitationComment/weddingInvitationComment.module";
+import { PaymentModule } from "./payment/payment.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -18,6 +22,10 @@ import { AuthModule } from "./auth/auth.module";
     ACLModule,
     AuthModule,
     UserModule,
+    WeddingInvitationModule,
+    WeddingInvitationShareModule,
+    WeddingInvitationCommentModule,
+    PaymentModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

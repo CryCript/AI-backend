@@ -1,8 +1,38 @@
 [
   {
+    "role": "admin",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "User",
     "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "User",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -12,9 +42,45 @@
     "attributes": "*"
   },
   {
+    "role": "vendor",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "User",
     "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "User",
+    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -24,8 +90,512 @@
     "attributes": "*"
   },
   {
+    "role": "vendor",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
     "role": "user",
     "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitationShare",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitationShare",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitationShare",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitationShare",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitationShare",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitationShare",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitationShare",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitationShare",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitationShare",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitationShare",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitationShare",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitationShare",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitationShare",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitationShare",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitationShare",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitationShare",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitationShare",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitationShare",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitationShare",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitationShare",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitationComment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitationComment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitationComment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitationComment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitationComment",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitationComment",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitationComment",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitationComment",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitationComment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitationComment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitationComment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitationComment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitationComment",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitationComment",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitationComment",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitationComment",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WeddingInvitationComment",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "WeddingInvitationComment",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WeddingInvitationComment",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "WeddingInvitationComment",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Payment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "Payment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Payment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "Payment",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Payment",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "Payment",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Payment",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "Payment",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Payment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "Payment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Payment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "Payment",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Payment",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "Payment",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Payment",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "Payment",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Payment",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "Payment",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Payment",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "Payment",
     "action": "read:any",
     "attributes": "*"
   }
