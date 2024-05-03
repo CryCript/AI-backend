@@ -242,8 +242,12 @@ export class UserControllerBase {
     const results = await this.service.findPayments(params.id, {
       ...query,
       select: {
+        accessTo: true,
         createdAt: true,
+        evidence: true,
         id: true,
+        noRef: true,
+        status: true,
         updatedAt: true,
 
         userId: {

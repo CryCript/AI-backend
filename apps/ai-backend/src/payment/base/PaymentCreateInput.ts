@@ -11,12 +11,57 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { IsString, IsOptional, IsEnum, ValidateNested } from "class-validator";
+import { EnumPaymentStatus } from "./EnumPaymentStatus";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 
 @InputType()
 class PaymentCreateInput {
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  accessTo?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  evidence?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  noRef?: string | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumPaymentStatus,
+  })
+  @IsEnum(EnumPaymentStatus)
+  @IsOptional()
+  @Field(() => EnumPaymentStatus, {
+    nullable: true,
+  })
+  status?: "Success" | "Pending" | "Failed" | null;
+
   @ApiProperty({
     required: false,
     type: () => UserWhereUniqueInput,

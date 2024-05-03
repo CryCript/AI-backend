@@ -11,13 +11,37 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringFilter } from "../../util/StringFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { IsOptional, IsEnum, ValidateNested } from "class-validator";
+import { StringFilter } from "../../util/StringFilter";
+import { EnumPaymentStatus } from "./EnumPaymentStatus";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class PaymentWhereInput {
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  accessTo?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  evidence?: StringNullableFilter;
+
   @ApiProperty({
     required: false,
     type: StringFilter,
@@ -28,6 +52,28 @@ class PaymentWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  noRef?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumPaymentStatus,
+  })
+  @IsEnum(EnumPaymentStatus)
+  @IsOptional()
+  @Field(() => EnumPaymentStatus, {
+    nullable: true,
+  })
+  status?: "Success" | "Pending" | "Failed";
 
   @ApiProperty({
     required: false,
