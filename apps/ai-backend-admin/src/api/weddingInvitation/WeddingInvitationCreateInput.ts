@@ -5,6 +5,7 @@ import { WeddingInvitationShareCreateNestedManyWithoutWeddingInvitationsInput } 
 
 export type WeddingInvitationCreateInput = {
   bride?: InputJsonValue;
+  design?: InputJsonValue;
   events?: InputJsonValue;
   galleries?: InputJsonValue;
   gifts?: InputJsonValue;

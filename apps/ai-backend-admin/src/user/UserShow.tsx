@@ -4,23 +4,21 @@ import {
   Show,
   SimpleShowLayout,
   ShowProps,
-  TextField,
   DateField,
+  TextField,
   ReferenceManyField,
   Datagrid,
   ReferenceField,
 } from "react-admin";
 
+import { INVITATIONTYPE_TITLE_FIELD } from "../invitationType/InvitationTypeTitle";
+import { PAYMENTSMETHOD_TITLE_FIELD } from "../paymentsMethod/PaymentsMethodTitle";
 import { USER_TITLE_FIELD } from "./UserTitle";
 
 export const UserShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <TextField
-          label="Access Wedding Invitation"
-          source="accessWeddingInvitation"
-        />
         <DateField source="createdAt" label="Created At" />
         <TextField label="Email" source="email" />
         <TextField label="First Name" source="firstName" />
@@ -37,11 +35,23 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
           label="Payments"
         >
           <Datagrid rowClick="show">
-            <TextField label="Access To" source="accessTo" />
+            <ReferenceField
+              label="Access To"
+              source="invitationtype.id"
+              reference="InvitationType"
+            >
+              <TextField source={INVITATIONTYPE_TITLE_FIELD} />
+            </ReferenceField>
             <DateField source="createdAt" label="Created At" />
             <TextField label="Evidence" source="evidence" />
             <TextField label="ID" source="id" />
-            <TextField label="No Ref" source="noRef" />
+            <ReferenceField
+              label="Payment Method"
+              source="paymentsmethod.id"
+              reference="PaymentsMethod"
+            >
+              <TextField source={PAYMENTSMETHOD_TITLE_FIELD} />
+            </ReferenceField>
             <TextField label="Status" source="status" />
             <DateField source="updatedAt" label="Updated At" />
             <ReferenceField label="User_ID" source="user.id" reference="User">
@@ -57,6 +67,7 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
           <Datagrid rowClick="show">
             <TextField label="Bride" source="bride" />
             <DateField source="createdAt" label="Created At" />
+            <TextField label="Design" source="design" />
             <TextField label="Events" source="events" />
             <TextField label="Galleries" source="galleries" />
             <TextField label="Gifts" source="gifts" />

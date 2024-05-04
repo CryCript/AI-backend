@@ -598,5 +598,245 @@
     "resource": "Payment",
     "action": "read:any",
     "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "PaymentsMethod",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "PaymentsMethod",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "PaymentsMethod",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "PaymentsMethod",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "PaymentsMethod",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "PaymentsMethod",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "PaymentsMethod",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "PaymentsMethod",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "PaymentsMethod",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "PaymentsMethod",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "PaymentsMethod",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "PaymentsMethod",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "PaymentsMethod",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "PaymentsMethod",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "PaymentsMethod",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "PaymentsMethod",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "PaymentsMethod",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "PaymentsMethod",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "PaymentsMethod",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "PaymentsMethod",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "InvitationType",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "InvitationType",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InvitationType",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "InvitationType",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "InvitationType",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "InvitationType",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InvitationType",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "InvitationType",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "InvitationType",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "InvitationType",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InvitationType",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "InvitationType",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "InvitationType",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "InvitationType",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InvitationType",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "InvitationType",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "InvitationType",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "reseller",
+    "resource": "InvitationType",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InvitationType",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "vendor",
+    "resource": "InvitationType",
+    "action": "read:any",
+    "attributes": "*"
   }
 ]

@@ -14,6 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   User as PrismaUser,
+  InvitationType as PrismaInvitationType,
   Payment as PrismaPayment,
   WeddingInvitation as PrismaWeddingInvitation,
 } from "@prisma/client";
@@ -75,6 +76,17 @@ export class UserServiceBase {
     args: Prisma.SelectSubset<T, Prisma.UserDeleteArgs>
   ): Promise<PrismaUser> {
     return this.prisma.user.delete(args);
+  }
+
+  async findAccess(
+    parentId: string,
+    args: Prisma.InvitationTypeFindManyArgs
+  ): Promise<PrismaInvitationType[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .access(args);
   }
 
   async findPayments(

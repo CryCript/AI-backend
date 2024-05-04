@@ -65,6 +65,7 @@ export class WeddingInvitationControllerBase {
       select: {
         bride: true,
         createdAt: true,
+        design: true,
         events: true,
         galleries: true,
         gifts: true,
@@ -107,6 +108,7 @@ export class WeddingInvitationControllerBase {
       select: {
         bride: true,
         createdAt: true,
+        design: true,
         events: true,
         galleries: true,
         gifts: true,
@@ -148,6 +150,7 @@ export class WeddingInvitationControllerBase {
       select: {
         bride: true,
         createdAt: true,
+        design: true,
         events: true,
         galleries: true,
         gifts: true,
@@ -204,6 +207,7 @@ export class WeddingInvitationControllerBase {
         select: {
           bride: true,
           createdAt: true,
+          design: true,
           events: true,
           galleries: true,
           gifts: true,
@@ -253,6 +257,7 @@ export class WeddingInvitationControllerBase {
         select: {
           bride: true,
           createdAt: true,
+          design: true,
           events: true,
           galleries: true,
           gifts: true,

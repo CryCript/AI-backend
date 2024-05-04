@@ -6,6 +6,7 @@ import { WeddingInvitationShare } from "../weddingInvitationShare/WeddingInvitat
 export type WeddingInvitation = {
   bride: JsonValue;
   createdAt: Date;
+  design: JsonValue;
   events: JsonValue;
   galleries: JsonValue;
   gifts: JsonValue;

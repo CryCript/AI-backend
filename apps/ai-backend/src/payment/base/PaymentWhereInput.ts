@@ -11,10 +11,12 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { InvitationTypeWhereUniqueInput } from "../../invitationType/base/InvitationTypeWhereUniqueInput";
+import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
-import { IsOptional, IsEnum, ValidateNested } from "class-validator";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { PaymentsMethodWhereUniqueInput } from "../../paymentsMethod/base/PaymentsMethodWhereUniqueInput";
 import { EnumPaymentStatus } from "./EnumPaymentStatus";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
@@ -22,14 +24,15 @@ import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 class PaymentWhereInput {
   @ApiProperty({
     required: false,
-    type: StringNullableFilter,
+    type: () => InvitationTypeWhereUniqueInput,
   })
-  @Type(() => StringNullableFilter)
+  @ValidateNested()
+  @Type(() => InvitationTypeWhereUniqueInput)
   @IsOptional()
-  @Field(() => StringNullableFilter, {
+  @Field(() => InvitationTypeWhereUniqueInput, {
     nullable: true,
   })
-  accessTo?: StringNullableFilter;
+  accessTo?: InvitationTypeWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -55,14 +58,15 @@ class PaymentWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringNullableFilter,
+    type: () => PaymentsMethodWhereUniqueInput,
   })
-  @Type(() => StringNullableFilter)
+  @ValidateNested()
+  @Type(() => PaymentsMethodWhereUniqueInput)
   @IsOptional()
-  @Field(() => StringNullableFilter, {
+  @Field(() => PaymentsMethodWhereUniqueInput, {
     nullable: true,
   })
-  noRef?: StringNullableFilter;
+  paymentMethod?: PaymentsMethodWhereUniqueInput;
 
   @ApiProperty({
     required: false,

@@ -1,9 +1,10 @@
+import { InvitationTypeCreateNestedManyWithoutUsersInput } from "./InvitationTypeCreateNestedManyWithoutUsersInput";
 import { PaymentCreateNestedManyWithoutUsersInput } from "./PaymentCreateNestedManyWithoutUsersInput";
 import { InputJsonValue } from "../../types";
 import { WeddingInvitationCreateNestedManyWithoutUsersInput } from "./WeddingInvitationCreateNestedManyWithoutUsersInput";
 
 export type UserCreateInput = {
-  accessWeddingInvitation?: "Yes" | "No" | null;
+  access?: InvitationTypeCreateNestedManyWithoutUsersInput;
   email?: string | null;
   firstName?: string | null;
   lastName?: string | null;

@@ -1,9 +1,10 @@
+import { InvitationTypeUpdateManyWithoutUsersInput } from "./InvitationTypeUpdateManyWithoutUsersInput";
 import { PaymentUpdateManyWithoutUsersInput } from "./PaymentUpdateManyWithoutUsersInput";
 import { InputJsonValue } from "../../types";
 import { WeddingInvitationUpdateManyWithoutUsersInput } from "./WeddingInvitationUpdateManyWithoutUsersInput";
 
 export type UserUpdateInput = {
-  accessWeddingInvitation?: "Yes" | "No" | null;
+  access?: InvitationTypeUpdateManyWithoutUsersInput;
   email?: string | null;
   firstName?: string | null;
   lastName?: string | null;

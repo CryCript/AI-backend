@@ -18,37 +18,29 @@ import { PaymentService } from "../payment.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  accessTo: "exampleAccessTo",
   createdAt: new Date(),
   evidence: "exampleEvidence",
   id: "exampleId",
-  noRef: "exampleNoRef",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
-  accessTo: "exampleAccessTo",
   createdAt: new Date(),
   evidence: "exampleEvidence",
   id: "exampleId",
-  noRef: "exampleNoRef",
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
   {
-    accessTo: "exampleAccessTo",
     createdAt: new Date(),
     evidence: "exampleEvidence",
     id: "exampleId",
-    noRef: "exampleNoRef",
     updatedAt: new Date(),
   },
 ];
 const FIND_ONE_RESULT = {
-  accessTo: "exampleAccessTo",
   createdAt: new Date(),
   evidence: "exampleEvidence",
   id: "exampleId",
-  noRef: "exampleNoRef",
   updatedAt: new Date(),
 };
 

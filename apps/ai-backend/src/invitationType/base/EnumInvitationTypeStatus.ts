@@ -11,11 +11,11 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { registerEnumType } from "@nestjs/graphql";
 
-export enum EnumUserAccessWeddingInvitation {
-  Yes = "Yes",
-  No = "No",
+export enum EnumInvitationTypeStatus {
+  Active = "Active",
+  NonActive = "NonActive",
 }
 
-registerEnumType(EnumUserAccessWeddingInvitation, {
-  name: "EnumUserAccessWeddingInvitation",
+registerEnumType(EnumInvitationTypeStatus, {
+  name: "EnumInvitationTypeStatus",
 });

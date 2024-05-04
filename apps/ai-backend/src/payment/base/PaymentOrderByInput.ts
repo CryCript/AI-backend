@@ -28,7 +28,7 @@ class PaymentOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  accessTo?: SortOrder;
+  accessToId?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -72,7 +72,7 @@ class PaymentOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  noRef?: SortOrder;
+  paymentMethodId?: SortOrder;
 
   @ApiProperty({
     required: false,

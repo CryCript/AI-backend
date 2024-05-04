@@ -11,14 +11,16 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { InvitationType } from "../../invitationType/base/InvitationType";
 import {
-  IsString,
+  ValidateNested,
   IsOptional,
   IsDate,
+  IsString,
   IsEnum,
-  ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { PaymentsMethod } from "../../paymentsMethod/base/PaymentsMethod";
 import { EnumPaymentStatus } from "./EnumPaymentStatus";
 import { User } from "../../user/base/User";
 
@@ -26,14 +28,12 @@ import { User } from "../../user/base/User";
 class Payment {
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => InvitationType,
   })
-  @IsString()
+  @ValidateNested()
+  @Type(() => InvitationType)
   @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  accessTo!: string | null;
+  accessTo?: InvitationType | null;
 
   @ApiProperty({
     required: true,
@@ -64,14 +64,12 @@ class Payment {
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => PaymentsMethod,
   })
-  @IsString()
+  @ValidateNested()
+  @Type(() => PaymentsMethod)
   @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  noRef!: string | null;
+  paymentMethod?: PaymentsMethod | null;
 
   @ApiProperty({
     required: false,

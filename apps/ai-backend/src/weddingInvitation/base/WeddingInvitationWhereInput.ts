@@ -42,6 +42,17 @@ class WeddingInvitationWhereInput {
   @Field(() => JsonFilter, {
     nullable: true,
   })
+  design?: JsonFilter;
+
+  @ApiProperty({
+    required: false,
+    type: JsonFilter,
+  })
+  @Type(() => JsonFilter)
+  @IsOptional()
+  @Field(() => JsonFilter, {
+    nullable: true,
+  })
   events?: JsonFilter;
 
   @ApiProperty({

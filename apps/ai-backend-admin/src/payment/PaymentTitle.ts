@@ -1,7 +1,7 @@
 import { Payment as TPayment } from "../api/payment/Payment";
 
-export const PAYMENT_TITLE_FIELD = "accessTo";
+export const PAYMENT_TITLE_FIELD = "evidence";
 
 export const PaymentTitle = (record: TPayment): string => {
-  return record.accessTo?.toString() || String(record.id);
+  return record.evidence?.toString() || String(record.id);
 };

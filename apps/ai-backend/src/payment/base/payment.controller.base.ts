@@ -52,6 +52,18 @@ export class PaymentControllerBase {
       data: {
         ...data,
 
+        accessTo: data.accessTo
+          ? {
+              connect: data.accessTo,
+            }
+          : undefined,
+
+        paymentMethod: data.paymentMethod
+          ? {
+              connect: data.paymentMethod,
+            }
+          : undefined,
+
         userId: data.userId
           ? {
               connect: data.userId,
@@ -59,11 +71,22 @@ export class PaymentControllerBase {
           : undefined,
       },
       select: {
-        accessTo: true,
+        accessTo: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         evidence: true,
         id: true,
-        noRef: true,
+
+        paymentMethod: {
+          select: {
+            id: true,
+          },
+        },
+
         status: true,
         updatedAt: true,
 
@@ -93,11 +116,22 @@ export class PaymentControllerBase {
     return this.service.payments({
       ...args,
       select: {
-        accessTo: true,
+        accessTo: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         evidence: true,
         id: true,
-        noRef: true,
+
+        paymentMethod: {
+          select: {
+            id: true,
+          },
+        },
+
         status: true,
         updatedAt: true,
 
@@ -128,11 +162,22 @@ export class PaymentControllerBase {
     const result = await this.service.payment({
       where: params,
       select: {
-        accessTo: true,
+        accessTo: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         evidence: true,
         id: true,
-        noRef: true,
+
+        paymentMethod: {
+          select: {
+            id: true,
+          },
+        },
+
         status: true,
         updatedAt: true,
 
@@ -173,6 +218,18 @@ export class PaymentControllerBase {
         data: {
           ...data,
 
+          accessTo: data.accessTo
+            ? {
+                connect: data.accessTo,
+              }
+            : undefined,
+
+          paymentMethod: data.paymentMethod
+            ? {
+                connect: data.paymentMethod,
+              }
+            : undefined,
+
           userId: data.userId
             ? {
                 connect: data.userId,
@@ -180,11 +237,22 @@ export class PaymentControllerBase {
             : undefined,
         },
         select: {
-          accessTo: true,
+          accessTo: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
           evidence: true,
           id: true,
-          noRef: true,
+
+          paymentMethod: {
+            select: {
+              id: true,
+            },
+          },
+
           status: true,
           updatedAt: true,
 
@@ -223,11 +291,22 @@ export class PaymentControllerBase {
       return await this.service.deletePayment({
         where: params,
         select: {
-          accessTo: true,
+          accessTo: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
           evidence: true,
           id: true,
-          noRef: true,
+
+          paymentMethod: {
+            select: {
+              id: true,
+            },
+          },
+
           status: true,
           updatedAt: true,
 
