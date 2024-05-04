@@ -3,8 +3,8 @@ import {
   List,
   Datagrid,
   ListProps,
-  DateField,
   TextField,
+  DateField,
   ReferenceField,
 } from "react-admin";
 import Pagination from "../Components/Pagination";
@@ -20,8 +20,12 @@ export const PaymentList = (props: ListProps): React.ReactElement => {
       pagination={<Pagination />}
     >
       <Datagrid rowClick="show">
+        <TextField label="Access To" source="accessTo" />
         <DateField source="createdAt" label="Created At" />
+        <TextField label="Evidence" source="evidence" />
         <TextField label="ID" source="id" />
+        <TextField label="No Ref" source="noRef" />
+        <TextField label="Status" source="status" />
         <DateField source="updatedAt" label="Updated At" />
         <ReferenceField label="User_ID" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />

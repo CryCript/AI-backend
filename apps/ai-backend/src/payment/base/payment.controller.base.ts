@@ -59,8 +59,12 @@ export class PaymentControllerBase {
           : undefined,
       },
       select: {
+        accessTo: true,
         createdAt: true,
+        evidence: true,
         id: true,
+        noRef: true,
+        status: true,
         updatedAt: true,
 
         userId: {
@@ -89,8 +93,12 @@ export class PaymentControllerBase {
     return this.service.payments({
       ...args,
       select: {
+        accessTo: true,
         createdAt: true,
+        evidence: true,
         id: true,
+        noRef: true,
+        status: true,
         updatedAt: true,
 
         userId: {
@@ -120,8 +128,12 @@ export class PaymentControllerBase {
     const result = await this.service.payment({
       where: params,
       select: {
+        accessTo: true,
         createdAt: true,
+        evidence: true,
         id: true,
+        noRef: true,
+        status: true,
         updatedAt: true,
 
         userId: {
@@ -168,8 +180,12 @@ export class PaymentControllerBase {
             : undefined,
         },
         select: {
+          accessTo: true,
           createdAt: true,
+          evidence: true,
           id: true,
+          noRef: true,
+          status: true,
           updatedAt: true,
 
           userId: {
@@ -207,8 +223,12 @@ export class PaymentControllerBase {
       return await this.service.deletePayment({
         where: params,
         select: {
+          accessTo: true,
           createdAt: true,
+          evidence: true,
           id: true,
+          noRef: true,
+          status: true,
           updatedAt: true,
 
           userId: {

@@ -11,12 +11,30 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, ValidateNested, IsOptional } from "class-validator";
+import {
+  IsString,
+  IsOptional,
+  IsDate,
+  IsEnum,
+  ValidateNested,
+} from "class-validator";
 import { Type } from "class-transformer";
+import { EnumPaymentStatus } from "./EnumPaymentStatus";
 import { User } from "../../user/base/User";
 
 @ObjectType()
 class Payment {
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  accessTo!: string | null;
+
   @ApiProperty({
     required: true,
   })
@@ -26,12 +44,45 @@ class Payment {
   createdAt!: Date;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  evidence!: string | null;
+
+  @ApiProperty({
     required: true,
     type: String,
   })
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  noRef!: string | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumPaymentStatus,
+  })
+  @IsEnum(EnumPaymentStatus)
+  @IsOptional()
+  @Field(() => EnumPaymentStatus, {
+    nullable: true,
+  })
+  status?: "Success" | "Pending" | "Failed" | null;
 
   @ApiProperty({
     required: true,
