@@ -27,6 +27,7 @@ export const WeddingInvitationEdit = (props: EditProps): React.ReactElement => {
         <div />
         <div />
         <div />
+        <div />
         <ReferenceInput source="userId.id" reference="User" label="User_ID">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>

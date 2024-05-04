@@ -26,6 +26,8 @@ import { PaymentFindUniqueArgs } from "./PaymentFindUniqueArgs";
 import { CreatePaymentArgs } from "./CreatePaymentArgs";
 import { UpdatePaymentArgs } from "./UpdatePaymentArgs";
 import { DeletePaymentArgs } from "./DeletePaymentArgs";
+import { InvitationType } from "../../invitationType/base/InvitationType";
+import { PaymentsMethod } from "../../paymentsMethod/base/PaymentsMethod";
 import { User } from "../../user/base/User";
 import { PaymentService } from "../payment.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
@@ -96,6 +98,18 @@ export class PaymentResolverBase {
       data: {
         ...args.data,
 
+        accessTo: args.data.accessTo
+          ? {
+              connect: args.data.accessTo,
+            }
+          : undefined,
+
+        paymentMethod: args.data.paymentMethod
+          ? {
+              connect: args.data.paymentMethod,
+            }
+          : undefined,
+
         userId: args.data.userId
           ? {
               connect: args.data.userId,
@@ -120,6 +134,18 @@ export class PaymentResolverBase {
         ...args,
         data: {
           ...args.data,
+
+          accessTo: args.data.accessTo
+            ? {
+                connect: args.data.accessTo,
+              }
+            : undefined,
+
+          paymentMethod: args.data.paymentMethod
+            ? {
+                connect: args.data.paymentMethod,
+              }
+            : undefined,
 
           userId: args.data.userId
             ? {
@@ -157,6 +183,48 @@ export class PaymentResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => InvitationType, {
+    nullable: true,
+    name: "accessTo",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "InvitationType",
+    action: "read",
+    possession: "any",
+  })
+  async getAccessTo(
+    @graphql.Parent() parent: Payment
+  ): Promise<InvitationType | null> {
+    const result = await this.service.getAccessTo(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => PaymentsMethod, {
+    nullable: true,
+    name: "paymentMethod",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "PaymentsMethod",
+    action: "read",
+    possession: "any",
+  })
+  async getPaymentMethod(
+    @graphql.Parent() parent: Payment
+  ): Promise<PaymentsMethod | null> {
+    const result = await this.service.getPaymentMethod(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

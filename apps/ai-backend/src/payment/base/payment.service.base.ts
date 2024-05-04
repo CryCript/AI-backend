@@ -10,9 +10,12 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
+
 import {
   Prisma,
   Payment as PrismaPayment,
+  InvitationType as PrismaInvitationType,
+  PaymentsMethod as PrismaPaymentsMethod,
   User as PrismaUser,
 } from "@prisma/client";
 
@@ -47,6 +50,24 @@ export class PaymentServiceBase {
     args: Prisma.SelectSubset<T, Prisma.PaymentDeleteArgs>
   ): Promise<PrismaPayment> {
     return this.prisma.payment.delete(args);
+  }
+
+  async getAccessTo(parentId: string): Promise<PrismaInvitationType | null> {
+    return this.prisma.payment
+      .findUnique({
+        where: { id: parentId },
+      })
+      .accessTo();
+  }
+
+  async getPaymentMethod(
+    parentId: string
+  ): Promise<PrismaPaymentsMethod | null> {
+    return this.prisma.payment
+      .findUnique({
+        where: { id: parentId },
+      })
+      .paymentMethod();
   }
 
   async getUserId(parentId: string): Promise<PrismaUser | null> {

@@ -3,19 +3,33 @@ import {
   Edit,
   SimpleForm,
   EditProps,
-  TextInput,
-  SelectInput,
   ReferenceInput,
+  SelectInput,
+  TextInput,
 } from "react-admin";
+import { InvitationTypeTitle } from "../invitationType/InvitationTypeTitle";
+import { PaymentsMethodTitle } from "../paymentsMethod/PaymentsMethodTitle";
 import { UserTitle } from "../user/UserTitle";
 
 export const PaymentEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
-        <TextInput label="Access To" source="accessTo" />
+        <ReferenceInput
+          source="accessTo.id"
+          reference="InvitationType"
+          label="Access To"
+        >
+          <SelectInput optionText={InvitationTypeTitle} />
+        </ReferenceInput>
         <TextInput label="Evidence" source="evidence" />
-        <TextInput label="No Ref" source="noRef" />
+        <ReferenceInput
+          source="paymentMethod.id"
+          reference="PaymentsMethod"
+          label="Payment Method"
+        >
+          <SelectInput optionText={PaymentsMethodTitle} />
+        </ReferenceInput>
         <SelectInput
           source="status"
           label="Status"

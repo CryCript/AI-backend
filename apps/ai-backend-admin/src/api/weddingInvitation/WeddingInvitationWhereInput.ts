@@ -7,6 +7,7 @@ import { WeddingInvitationShareListRelationFilter } from "../weddingInvitationSh
 
 export type WeddingInvitationWhereInput = {
   bride?: JsonFilter;
+  design?: JsonFilter;
   events?: JsonFilter;
   galleries?: JsonFilter;
   gifts?: JsonFilter;

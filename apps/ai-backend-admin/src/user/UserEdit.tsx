@@ -4,13 +4,14 @@ import {
   Edit,
   SimpleForm,
   EditProps,
-  SelectInput,
-  TextInput,
-  PasswordInput,
   ReferenceArrayInput,
   SelectArrayInput,
+  TextInput,
+  PasswordInput,
+  SelectInput,
 } from "react-admin";
 
+import { InvitationTypeTitle } from "../invitationType/InvitationTypeTitle";
 import { PaymentTitle } from "../payment/PaymentTitle";
 import { WeddingInvitationTitle } from "../weddingInvitation/WeddingInvitationTitle";
 import { ROLES_OPTIONS } from "../user/RolesOptions";
@@ -19,17 +20,14 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
-        <SelectInput
-          source="accessWeddingInvitation"
-          label="Access Wedding Invitation"
-          choices={[
-            { label: "Yes", value: "Yes" },
-            { label: "No", value: "No" },
-          ]}
-          optionText="label"
-          allowEmpty
-          optionValue="value"
-        />
+        <ReferenceArrayInput
+          source="access"
+          reference="InvitationType"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={InvitationTypeTitle} />
+        </ReferenceArrayInput>
         <TextInput label="Email" source="email" type="email" />
         <TextInput label="First Name" source="firstName" />
         <TextInput label="Last Name" source="lastName" />

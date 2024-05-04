@@ -11,23 +11,26 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsEnum, ValidateNested } from "class-validator";
+import { InvitationTypeWhereUniqueInput } from "../../invitationType/base/InvitationTypeWhereUniqueInput";
+import { ValidateNested, IsOptional, IsString, IsEnum } from "class-validator";
+import { Type } from "class-transformer";
+import { PaymentsMethodWhereUniqueInput } from "../../paymentsMethod/base/PaymentsMethodWhereUniqueInput";
 import { EnumPaymentStatus } from "./EnumPaymentStatus";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { Type } from "class-transformer";
 
 @InputType()
 class PaymentUpdateInput {
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => InvitationTypeWhereUniqueInput,
   })
-  @IsString()
+  @ValidateNested()
+  @Type(() => InvitationTypeWhereUniqueInput)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => InvitationTypeWhereUniqueInput, {
     nullable: true,
   })
-  accessTo?: string | null;
+  accessTo?: InvitationTypeWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
@@ -42,14 +45,15 @@ class PaymentUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => PaymentsMethodWhereUniqueInput,
   })
-  @IsString()
+  @ValidateNested()
+  @Type(() => PaymentsMethodWhereUniqueInput)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => PaymentsMethodWhereUniqueInput, {
     nullable: true,
   })
-  noRef?: string | null;
+  paymentMethod?: PaymentsMethodWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

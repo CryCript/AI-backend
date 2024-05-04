@@ -1,9 +1,11 @@
+import { InvitationTypeWhereUniqueInput } from "../invitationType/InvitationTypeWhereUniqueInput";
+import { PaymentsMethodWhereUniqueInput } from "../paymentsMethod/PaymentsMethodWhereUniqueInput";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type PaymentCreateInput = {
-  accessTo?: string | null;
+  accessTo?: InvitationTypeWhereUniqueInput | null;
   evidence?: string | null;
-  noRef?: string | null;
+  paymentMethod?: PaymentsMethodWhereUniqueInput | null;
   status?: "Success" | "Pending" | "Failed" | null;
   userId?: UserWhereUniqueInput | null;
 };

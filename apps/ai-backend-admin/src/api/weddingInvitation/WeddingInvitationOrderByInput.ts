@@ -3,6 +3,7 @@ import { SortOrder } from "../../util/SortOrder";
 export type WeddingInvitationOrderByInput = {
   bride?: SortOrder;
   createdAt?: SortOrder;
+  design?: SortOrder;
   events?: SortOrder;
   galleries?: SortOrder;
   gifts?: SortOrder;

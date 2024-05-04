@@ -40,6 +40,16 @@ class WeddingInvitationUpdateInput {
   @Field(() => GraphQLJSON, {
     nullable: true,
   })
+  design?: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
   events?: InputJsonValue;
 
   @ApiProperty({

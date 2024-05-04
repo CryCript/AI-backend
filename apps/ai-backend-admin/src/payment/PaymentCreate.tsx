@@ -3,19 +3,33 @@ import {
   Create,
   SimpleForm,
   CreateProps,
-  TextInput,
-  SelectInput,
   ReferenceInput,
+  SelectInput,
+  TextInput,
 } from "react-admin";
+import { InvitationTypeTitle } from "../invitationType/InvitationTypeTitle";
+import { PaymentsMethodTitle } from "../paymentsMethod/PaymentsMethodTitle";
 import { UserTitle } from "../user/UserTitle";
 
 export const PaymentCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <TextInput label="Access To" source="accessTo" />
+        <ReferenceInput
+          source="accessTo.id"
+          reference="InvitationType"
+          label="Access To"
+        >
+          <SelectInput optionText={InvitationTypeTitle} />
+        </ReferenceInput>
         <TextInput label="Evidence" source="evidence" />
-        <TextInput label="No Ref" source="noRef" />
+        <ReferenceInput
+          source="paymentMethod.id"
+          reference="PaymentsMethod"
+          label="Payment Method"
+        >
+          <SelectInput optionText={PaymentsMethodTitle} />
+        </ReferenceInput>
         <SelectInput
           source="status"
           label="Status"

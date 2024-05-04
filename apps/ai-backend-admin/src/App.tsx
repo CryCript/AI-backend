@@ -25,6 +25,14 @@ import { PaymentList } from "./payment/PaymentList";
 import { PaymentCreate } from "./payment/PaymentCreate";
 import { PaymentEdit } from "./payment/PaymentEdit";
 import { PaymentShow } from "./payment/PaymentShow";
+import { PaymentsMethodList } from "./paymentsMethod/PaymentsMethodList";
+import { PaymentsMethodCreate } from "./paymentsMethod/PaymentsMethodCreate";
+import { PaymentsMethodEdit } from "./paymentsMethod/PaymentsMethodEdit";
+import { PaymentsMethodShow } from "./paymentsMethod/PaymentsMethodShow";
+import { InvitationTypeList } from "./invitationType/InvitationTypeList";
+import { InvitationTypeCreate } from "./invitationType/InvitationTypeCreate";
+import { InvitationTypeEdit } from "./invitationType/InvitationTypeEdit";
+import { InvitationTypeShow } from "./invitationType/InvitationTypeShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -85,6 +93,20 @@ const App = (): React.ReactElement => {
           edit={PaymentEdit}
           create={PaymentCreate}
           show={PaymentShow}
+        />
+        <Resource
+          name="PaymentsMethod"
+          list={PaymentsMethodList}
+          edit={PaymentsMethodEdit}
+          create={PaymentsMethodCreate}
+          show={PaymentsMethodShow}
+        />
+        <Resource
+          name="InvitationType"
+          list={InvitationTypeList}
+          edit={InvitationTypeEdit}
+          create={InvitationTypeCreate}
+          show={InvitationTypeShow}
         />
       </Admin>
     </div>

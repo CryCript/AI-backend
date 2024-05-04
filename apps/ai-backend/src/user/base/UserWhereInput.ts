@@ -11,10 +11,10 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { EnumUserAccessWeddingInvitation } from "./EnumUserAccessWeddingInvitation";
-import { IsEnum, IsOptional, ValidateNested } from "class-validator";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { InvitationTypeListRelationFilter } from "../../invitationType/base/InvitationTypeListRelationFilter";
+import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { PaymentListRelationFilter } from "../../payment/base/PaymentListRelationFilter";
 import { EnumUserStatus } from "./EnumUserStatus";
@@ -24,14 +24,15 @@ import { WeddingInvitationListRelationFilter } from "../../weddingInvitation/bas
 class UserWhereInput {
   @ApiProperty({
     required: false,
-    enum: EnumUserAccessWeddingInvitation,
+    type: () => InvitationTypeListRelationFilter,
   })
-  @IsEnum(EnumUserAccessWeddingInvitation)
+  @ValidateNested()
+  @Type(() => InvitationTypeListRelationFilter)
   @IsOptional()
-  @Field(() => EnumUserAccessWeddingInvitation, {
+  @Field(() => InvitationTypeListRelationFilter, {
     nullable: true,
   })
-  accessWeddingInvitation?: "Yes" | "No";
+  access?: InvitationTypeListRelationFilter;
 
   @ApiProperty({
     required: false,

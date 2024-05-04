@@ -48,6 +48,16 @@ class WeddingInvitation {
   @Field(() => GraphQLJSON, {
     nullable: true,
   })
+  design!: JsonValue;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
   events!: JsonValue;
 
   @ApiProperty({

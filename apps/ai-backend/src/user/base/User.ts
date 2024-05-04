@@ -11,13 +11,13 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { EnumUserAccessWeddingInvitation } from "./EnumUserAccessWeddingInvitation";
+import { InvitationType } from "../../invitationType/base/InvitationType";
 import {
-  IsEnum,
+  ValidateNested,
   IsOptional,
   IsDate,
   IsString,
-  ValidateNested,
+  IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { Payment } from "../../payment/base/Payment";
@@ -31,14 +31,12 @@ import { WeddingInvitation } from "../../weddingInvitation/base/WeddingInvitatio
 class User {
   @ApiProperty({
     required: false,
-    enum: EnumUserAccessWeddingInvitation,
+    type: () => [InvitationType],
   })
-  @IsEnum(EnumUserAccessWeddingInvitation)
+  @ValidateNested()
+  @Type(() => InvitationType)
   @IsOptional()
-  @Field(() => EnumUserAccessWeddingInvitation, {
-    nullable: true,
-  })
-  accessWeddingInvitation?: "Yes" | "No" | null;
+  access?: Array<InvitationType>;
 
   @ApiProperty({
     required: true,

@@ -22,6 +22,7 @@ export const WeddingInvitationList = (props: ListProps): React.ReactElement => {
       <Datagrid rowClick="show">
         <TextField label="Bride" source="bride" />
         <DateField source="createdAt" label="Created At" />
+        <TextField label="Design" source="design" />
         <TextField label="Events" source="events" />
         <TextField label="Galleries" source="galleries" />
         <TextField label="Gifts" source="gifts" />

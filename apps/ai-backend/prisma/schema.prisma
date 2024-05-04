@@ -8,25 +8,26 @@ generator client {
 }
 
 model User {
-  accessWeddingInvitation EnumUserAccessWeddingInvitation?
-  createdAt               DateTime                         @default(now())
-  email                   String?                          @unique
-  firstName               String?
-  id                      String                           @id @default(cuid())
-  lastName                String?
-  password                String
-  payments                Payment[]
-  phone                   String?
-  roles                   Json
-  status                  EnumUserStatus?
-  updatedAt               DateTime                         @updatedAt
-  username                String                           @unique
-  weddingInvitations      WeddingInvitation[]
+  access             InvitationType[]
+  createdAt          DateTime            @default(now())
+  email              String?             @unique
+  firstName          String?
+  id                 String              @id @default(cuid())
+  lastName           String?
+  password           String
+  payments           Payment[]
+  phone              String?
+  roles              Json
+  status             EnumUserStatus?
+  updatedAt          DateTime            @updatedAt
+  username           String              @unique
+  weddingInvitations WeddingInvitation[]
 }
 
 model WeddingInvitation {
   bride                     Json?
   createdAt                 DateTime                   @default(now())
+  design                    Json?
   events                    Json?
   galleries                 Json?
   gifts                     Json?
@@ -74,20 +75,40 @@ model WeddingInvitationComment {
 }
 
 model Payment {
-  accessTo  String?
-  createdAt DateTime           @default(now())
-  evidence  String?
-  id        String             @id @default(cuid())
-  noRef     String?
-  status    EnumPaymentStatus?
-  updatedAt DateTime           @updatedAt
-  userId    User?              @relation(fields: [userIdId], references: [id])
-  userIdId  String?
+  accessTo        InvitationType?    @relation(fields: [accessToId], references: [id])
+  accessToId      String?
+  createdAt       DateTime           @default(now())
+  evidence        String?
+  id              String             @id @default(cuid())
+  paymentMethod   PaymentsMethod?    @relation(fields: [paymentMethodId], references: [id])
+  paymentMethodId String?
+  status          EnumPaymentStatus?
+  updatedAt       DateTime           @updatedAt
+  userId          User?              @relation(fields: [userIdId], references: [id])
+  userIdId        String?
 }
 
-enum EnumUserAccessWeddingInvitation {
-  Yes
-  No
+model PaymentsMethod {
+  account     EnumPaymentsMethodAccount?
+  createdAt   DateTime                       @default(now())
+  id          String                         @id @default(cuid())
+  logo        String?
+  nameRef     String?
+  noRef       String?
+  payments    Payment[]
+  paymentType EnumPaymentsMethodPaymentType?
+  status      EnumPaymentsMethodStatus?
+  updatedAt   DateTime                       @updatedAt
+}
+
+model InvitationType {
+  createdAt  DateTime                  @default(now())
+  id         String                    @id @default(cuid())
+  invitation String?
+  payments   Payment[]
+  status     EnumInvitationTypeStatus?
+  updatedAt  DateTime                  @updatedAt
+  user       User[]
 }
 
 enum EnumUserStatus {
@@ -100,4 +121,31 @@ enum EnumPaymentStatus {
   Success
   Pending
   Failed
+}
+
+enum EnumPaymentsMethodAccount {
+  Bri
+  Mandiri
+  Bni
+  Hsbc
+  ShopeePay
+  Ovo
+  Gopay
+  Dana
+  Qris
+}
+
+enum EnumPaymentsMethodPaymentType {
+  BankTransfer
+  Ewallet
+}
+
+enum EnumPaymentsMethodStatus {
+  Active
+  NonActive
+}
+
+enum EnumInvitationTypeStatus {
+  Active
+  NonActive
 }

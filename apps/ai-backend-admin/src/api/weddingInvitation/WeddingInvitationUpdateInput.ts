@@ -5,6 +5,7 @@ import { WeddingInvitationShareUpdateManyWithoutWeddingInvitationsInput } from "
 
 export type WeddingInvitationUpdateInput = {
   bride?: InputJsonValue;
+  design?: InputJsonValue;
   events?: InputJsonValue;
   galleries?: InputJsonValue;
   gifts?: InputJsonValue;

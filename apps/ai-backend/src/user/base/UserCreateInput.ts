@@ -11,10 +11,10 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { EnumUserAccessWeddingInvitation } from "./EnumUserAccessWeddingInvitation";
-import { IsEnum, IsOptional, IsString, ValidateNested } from "class-validator";
-import { PaymentCreateNestedManyWithoutUsersInput } from "./PaymentCreateNestedManyWithoutUsersInput";
+import { InvitationTypeCreateNestedManyWithoutUsersInput } from "./InvitationTypeCreateNestedManyWithoutUsersInput";
+import { ValidateNested, IsOptional, IsString, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
+import { PaymentCreateNestedManyWithoutUsersInput } from "./PaymentCreateNestedManyWithoutUsersInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
@@ -25,14 +25,15 @@ import { WeddingInvitationCreateNestedManyWithoutUsersInput } from "./WeddingInv
 class UserCreateInput {
   @ApiProperty({
     required: false,
-    enum: EnumUserAccessWeddingInvitation,
+    type: () => InvitationTypeCreateNestedManyWithoutUsersInput,
   })
-  @IsEnum(EnumUserAccessWeddingInvitation)
+  @ValidateNested()
+  @Type(() => InvitationTypeCreateNestedManyWithoutUsersInput)
   @IsOptional()
-  @Field(() => EnumUserAccessWeddingInvitation, {
+  @Field(() => InvitationTypeCreateNestedManyWithoutUsersInput, {
     nullable: true,
   })
-  accessWeddingInvitation?: "Yes" | "No" | null;
+  access?: InvitationTypeCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

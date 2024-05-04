@@ -26,6 +26,8 @@ import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
+import { InvitationTypeFindManyArgs } from "../../invitationType/base/InvitationTypeFindManyArgs";
+import { InvitationType } from "../../invitationType/base/InvitationType";
 import { PaymentFindManyArgs } from "../../payment/base/PaymentFindManyArgs";
 import { Payment } from "../../payment/base/Payment";
 import { WeddingInvitationFindManyArgs } from "../../weddingInvitation/base/WeddingInvitationFindManyArgs";
@@ -134,6 +136,26 @@ export class UserResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [InvitationType], { name: "access" })
+  @nestAccessControl.UseRoles({
+    resource: "InvitationType",
+    action: "read",
+    possession: "any",
+  })
+  async findAccess(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: InvitationTypeFindManyArgs
+  ): Promise<InvitationType[]> {
+    const results = await this.service.findAccess(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

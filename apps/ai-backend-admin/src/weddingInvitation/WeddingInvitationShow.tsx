@@ -20,6 +20,7 @@ export const WeddingInvitationShow = (props: ShowProps): React.ReactElement => {
       <SimpleShowLayout>
         <TextField label="Bride" source="bride" />
         <DateField source="createdAt" label="Created At" />
+        <TextField label="Design" source="design" />
         <TextField label="Events" source="events" />
         <TextField label="Galleries" source="galleries" />
         <TextField label="Gifts" source="gifts" />

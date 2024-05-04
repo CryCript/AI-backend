@@ -4,6 +4,8 @@ import { WeddingInvitationModule } from "./weddingInvitation/weddingInvitation.m
 import { WeddingInvitationShareModule } from "./weddingInvitationShare/weddingInvitationShare.module";
 import { WeddingInvitationCommentModule } from "./weddingInvitationComment/weddingInvitationComment.module";
 import { PaymentModule } from "./payment/payment.module";
+import { PaymentsMethodModule } from "./paymentsMethod/paymentsMethod.module";
+import { InvitationTypeModule } from "./invitationType/invitationType.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -26,6 +28,8 @@ import { AuthModule } from "./auth/auth.module";
     WeddingInvitationShareModule,
     WeddingInvitationCommentModule,
     PaymentModule,
+    PaymentsMethodModule,
+    InvitationTypeModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,
