@@ -26,30 +26,6 @@
   {
     "role": "admin",
     "resource": "User",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "reseller",
-    "resource": "User",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "User",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "vendor",
-    "resource": "User",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "User",
     "action": "update:any",
     "attributes": "*"
   },
@@ -69,30 +45,6 @@
     "role": "vendor",
     "resource": "User",
     "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "User",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "reseller",
-    "resource": "User",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "User",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "vendor",
-    "resource": "User",
-    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -362,30 +314,6 @@
   {
     "role": "admin",
     "resource": "WeddingInvitationComment",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "reseller",
-    "resource": "WeddingInvitationComment",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "WeddingInvitationComment",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "vendor",
-    "resource": "WeddingInvitationComment",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "WeddingInvitationComment",
     "action": "create:any",
     "attributes": "*"
   },
@@ -558,24 +486,6 @@
     "attributes": "*"
   },
   {
-    "role": "reseller",
-    "resource": "Payment",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Payment",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "vendor",
-    "resource": "Payment",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
     "role": "admin",
     "resource": "Payment",
     "action": "read:any",
@@ -630,67 +540,13 @@
     "attributes": "*"
   },
   {
-    "role": "reseller",
-    "resource": "PaymentsMethod",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "PaymentsMethod",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "vendor",
-    "resource": "PaymentsMethod",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "admin",
     "resource": "PaymentsMethod",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "reseller",
-    "resource": "PaymentsMethod",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "PaymentsMethod",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "vendor",
-    "resource": "PaymentsMethod",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "admin",
-    "resource": "PaymentsMethod",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "reseller",
-    "resource": "PaymentsMethod",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "PaymentsMethod",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "vendor",
     "resource": "PaymentsMethod",
     "action": "delete:any",
     "attributes": "*"
