@@ -18,6 +18,7 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { WeddingInvitationComment } from "./WeddingInvitationComment";
 import { WeddingInvitationCommentCountArgs } from "./WeddingInvitationCommentCountArgs";
@@ -64,13 +65,8 @@ export class WeddingInvitationCommentResolverBase {
     return this.service.weddingInvitationComments(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => WeddingInvitationComment, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "WeddingInvitationComment",
-    action: "read",
-    possession: "own",
-  })
   async weddingInvitationComment(
     @graphql.Args() args: WeddingInvitationCommentFindUniqueArgs
   ): Promise<WeddingInvitationComment | null> {

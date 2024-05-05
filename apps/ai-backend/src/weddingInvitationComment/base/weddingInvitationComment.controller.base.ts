@@ -21,6 +21,7 @@ import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
 import { WeddingInvitationCommentService } from "../weddingInvitationComment.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { WeddingInvitationCommentCreateInput } from "./WeddingInvitationCommentCreateInput";
 import { WeddingInvitationComment } from "./WeddingInvitationComment";
 import { WeddingInvitationCommentFindManyArgs } from "./WeddingInvitationCommentFindManyArgs";
@@ -125,15 +126,10 @@ export class WeddingInvitationCommentControllerBase {
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @common.Get("/:id")
   @swagger.ApiOkResponse({ type: WeddingInvitationComment })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
-  @nestAccessControl.UseRoles({
-    resource: "WeddingInvitationComment",
-    action: "read",
-    possession: "own",
-  })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })

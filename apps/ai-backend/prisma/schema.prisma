@@ -1,5 +1,5 @@
 datasource db {
-  provider = "mysql"
+  provider = "mongodb"
   url      = env("DB_URL")
 }
 
@@ -8,11 +8,12 @@ generator client {
 }
 
 model User {
-  access             InvitationType[]
+  access             InvitationType[]    @relation(fields: [accessIds], references: [id])
+  accessIds          String[]            @db.ObjectId
   createdAt          DateTime            @default(now())
   email              String?             @unique
   firstName          String?
-  id                 String              @id @default(cuid())
+  id                 String              @id @default(auto()) @map("_id") @db.ObjectId
   lastName           String?
   password           String
   payments           Payment[]
@@ -32,13 +33,13 @@ model WeddingInvitation {
   galleries                 Json?
   gifts                     Json?
   groom                     Json?
-  id                        String                     @id @default(cuid())
+  id                        String                     @id @default(auto()) @map("_id") @db.ObjectId
   invites                   Json?
   moments                   Json?
   quotes                    Json?
   updatedAt                 DateTime                   @updatedAt
   userId                    User                       @relation(fields: [userIdId], references: [id])
-  userIdId                  String
+  userIdId                  String                     @db.ObjectId
   video                     String?
   weddingInvitationComments WeddingInvitationComment[]
   weddingInvitationShares   WeddingInvitationShare[]
@@ -46,7 +47,7 @@ model WeddingInvitation {
 
 model WeddingInvitationShare {
   createdAt   DateTime           @default(now())
-  id          String             @id @default(cuid())
+  id          String             @id @default(auto()) @map("_id") @db.ObjectId
   institution String?
   link        String?
   name        String?
@@ -54,7 +55,7 @@ model WeddingInvitationShare {
   updatedAt   DateTime           @updatedAt
   view        Int?
   weddingId   WeddingInvitation? @relation(fields: [ID], references: [id])
-  ID          String?
+  ID          String?            @db.ObjectId
 }
 
 model WeddingInvitationComment {
@@ -62,7 +63,7 @@ model WeddingInvitationComment {
   comment     String?
   createdAt   DateTime           @default(now())
   email       String?
-  id          String             @id @default(cuid())
+  id          String             @id @default(auto()) @map("_id") @db.ObjectId
   institution String?
   link        String?
   moment      Json?
@@ -71,27 +72,27 @@ model WeddingInvitationComment {
   present     String?
   updatedAt   DateTime           @updatedAt
   weddingId   WeddingInvitation? @relation(fields: [weddingIdId], references: [id])
-  weddingIdId String?
+  weddingIdId String?            @db.ObjectId
 }
 
 model Payment {
   accessTo        InvitationType?    @relation(fields: [accessToId], references: [id])
-  accessToId      String?
+  accessToId      String?            @db.ObjectId
   createdAt       DateTime           @default(now())
   evidence        String?
-  id              String             @id @default(cuid())
+  id              String             @id @default(auto()) @map("_id") @db.ObjectId
   paymentMethod   PaymentsMethod?    @relation(fields: [paymentMethodId], references: [id])
-  paymentMethodId String?
+  paymentMethodId String?            @db.ObjectId
   status          EnumPaymentStatus?
   updatedAt       DateTime           @updatedAt
   userId          User?              @relation(fields: [userIdId], references: [id])
-  userIdId        String?
+  userIdId        String?            @db.ObjectId
 }
 
 model PaymentsMethod {
   account     EnumPaymentsMethodAccount?
   createdAt   DateTime                       @default(now())
-  id          String                         @id @default(cuid())
+  id          String                         @id @default(auto()) @map("_id") @db.ObjectId
   logo        String?
   nameRef     String?
   noRef       String?
@@ -103,12 +104,13 @@ model PaymentsMethod {
 
 model InvitationType {
   createdAt  DateTime                  @default(now())
-  id         String                    @id @default(cuid())
+  id         String                    @id @default(auto()) @map("_id") @db.ObjectId
   invitation String?
   payments   Payment[]
   status     EnumInvitationTypeStatus?
   updatedAt  DateTime                  @updatedAt
-  user       User[]
+  user       User[]                    @relation(fields: [userIds], references: [id])
+  userIds    String[]                  @db.ObjectId
 }
 
 enum EnumUserStatus {
