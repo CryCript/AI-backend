@@ -58,11 +58,11 @@ export class UserControllerBase {
     return await this.service.createUser({
       data: data,
       select: {
+        authenticationCode: true,
         createdAt: true,
         email: true,
-        firstName: true,
+        fullName: true,
         id: true,
-        lastName: true,
         phone: true,
         roles: true,
         status: true,
@@ -89,11 +89,11 @@ export class UserControllerBase {
     return this.service.users({
       ...args,
       select: {
+        authenticationCode: true,
         createdAt: true,
         email: true,
-        firstName: true,
+        fullName: true,
         id: true,
-        lastName: true,
         phone: true,
         roles: true,
         status: true,
@@ -121,11 +121,11 @@ export class UserControllerBase {
     const result = await this.service.user({
       where: params,
       select: {
+        authenticationCode: true,
         createdAt: true,
         email: true,
-        firstName: true,
+        fullName: true,
         id: true,
-        lastName: true,
         phone: true,
         roles: true,
         status: true,
@@ -162,11 +162,11 @@ export class UserControllerBase {
         where: params,
         data: data,
         select: {
+          authenticationCode: true,
           createdAt: true,
           email: true,
-          firstName: true,
+          fullName: true,
           id: true,
-          lastName: true,
           phone: true,
           roles: true,
           status: true,
@@ -202,11 +202,11 @@ export class UserControllerBase {
       return await this.service.deleteUser({
         where: params,
         select: {
+          authenticationCode: true,
           createdAt: true,
           email: true,
-          firstName: true,
+          fullName: true,
           id: true,
-          lastName: true,
           phone: true,
           roles: true,
           status: true,

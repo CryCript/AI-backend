@@ -6,10 +6,10 @@ import { WeddingInvitationListRelationFilter } from "../weddingInvitation/Weddin
 
 export type UserWhereInput = {
   access?: InvitationTypeListRelationFilter;
+  authenticationCode?: StringNullableFilter;
   email?: StringNullableFilter;
-  firstName?: StringNullableFilter;
+  fullName?: StringNullableFilter;
   id?: StringFilter;
-  lastName?: StringNullableFilter;
   payments?: PaymentListRelationFilter;
   phone?: StringNullableFilter;
   status?: "Register" | "Active" | "Nonactive";

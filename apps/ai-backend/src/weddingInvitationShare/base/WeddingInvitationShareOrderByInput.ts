@@ -116,7 +116,7 @@ class WeddingInvitationShareOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  ID?: SortOrder;
+  weddingIdId?: SortOrder;
 }
 
 export { WeddingInvitationShareOrderByInput as WeddingInvitationShareOrderByInput };

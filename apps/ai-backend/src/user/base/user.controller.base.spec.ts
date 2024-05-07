@@ -18,22 +18,22 @@ import { UserService } from "../user.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
+  authenticationCode: "exampleAuthenticationCode",
   createdAt: new Date(),
   email: "exampleEmail",
-  firstName: "exampleFirstName",
+  fullName: "exampleFullName",
   id: "exampleId",
-  lastName: "exampleLastName",
   password: "examplePassword",
   phone: "examplePhone",
   updatedAt: new Date(),
   username: "exampleUsername",
 };
 const CREATE_RESULT = {
+  authenticationCode: "exampleAuthenticationCode",
   createdAt: new Date(),
   email: "exampleEmail",
-  firstName: "exampleFirstName",
+  fullName: "exampleFullName",
   id: "exampleId",
-  lastName: "exampleLastName",
   password: "examplePassword",
   phone: "examplePhone",
   updatedAt: new Date(),
@@ -41,11 +41,11 @@ const CREATE_RESULT = {
 };
 const FIND_MANY_RESULT = [
   {
+    authenticationCode: "exampleAuthenticationCode",
     createdAt: new Date(),
     email: "exampleEmail",
-    firstName: "exampleFirstName",
+    fullName: "exampleFullName",
     id: "exampleId",
-    lastName: "exampleLastName",
     password: "examplePassword",
     phone: "examplePhone",
     updatedAt: new Date(),
@@ -53,11 +53,11 @@ const FIND_MANY_RESULT = [
   },
 ];
 const FIND_ONE_RESULT = {
+  authenticationCode: "exampleAuthenticationCode",
   createdAt: new Date(),
   email: "exampleEmail",
-  firstName: "exampleFirstName",
+  fullName: "exampleFullName",
   id: "exampleId",
-  lastName: "exampleLastName",
   password: "examplePassword",
   phone: "examplePhone",
   updatedAt: new Date(),

@@ -10,11 +10,11 @@ generator client {
 model User {
   access             InvitationType[]    @relation(fields: [accessIds], references: [id])
   accessIds          String[]            @db.ObjectId
+  authenticationCode String?
   createdAt          DateTime            @default(now())
   email              String?             @unique
-  firstName          String?
+  fullName           String?
   id                 String              @id @default(auto()) @map("_id") @db.ObjectId
-  lastName           String?
   password           String
   payments           Payment[]
   phone              String?
@@ -54,8 +54,8 @@ model WeddingInvitationShare {
   open        String?
   updatedAt   DateTime           @updatedAt
   view        Int?
-  weddingId   WeddingInvitation? @relation(fields: [ID], references: [id])
-  ID          String?            @db.ObjectId
+  weddingId   WeddingInvitation? @relation(fields: [weddingIdId], references: [id])
+  weddingIdId String?            @db.ObjectId
 }
 
 model WeddingInvitationComment {

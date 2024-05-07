@@ -5,9 +5,9 @@ import { WeddingInvitationUpdateManyWithoutUsersInput } from "./WeddingInvitatio
 
 export type UserUpdateInput = {
   access?: InvitationTypeUpdateManyWithoutUsersInput;
+  authenticationCode?: string | null;
   email?: string | null;
-  firstName?: string | null;
-  lastName?: string | null;
+  fullName?: string | null;
   password?: string;
   payments?: PaymentUpdateManyWithoutUsersInput;
   phone?: string | null;
