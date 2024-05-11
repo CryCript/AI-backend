@@ -15,8 +15,8 @@ import { InvitationType } from "../../invitationType/base/InvitationType";
 import {
   ValidateNested,
   IsOptional,
-  IsDate,
   IsString,
+  IsDate,
   IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
@@ -37,6 +37,17 @@ class User {
   @Type(() => InvitationType)
   @IsOptional()
   access?: Array<InvitationType>;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  authenticationCode!: string | null;
 
   @ApiProperty({
     required: true,
@@ -66,7 +77,7 @@ class User {
   @Field(() => String, {
     nullable: true,
   })
-  firstName!: string | null;
+  fullName!: string | null;
 
   @ApiProperty({
     required: true,
@@ -75,17 +86,6 @@ class User {
   @IsString()
   @Field(() => String)
   id!: string;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  lastName!: string | null;
 
   @ApiProperty({
     required: false,

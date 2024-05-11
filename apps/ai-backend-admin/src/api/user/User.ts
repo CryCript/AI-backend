@@ -5,11 +5,11 @@ import { WeddingInvitation } from "../weddingInvitation/WeddingInvitation";
 
 export type User = {
   access?: Array<InvitationType>;
+  authenticationCode: string | null;
   createdAt: Date;
   email: string | null;
-  firstName: string | null;
+  fullName: string | null;
   id: string;
-  lastName: string | null;
   payments?: Array<Payment>;
   phone: string | null;
   roles: JsonValue;

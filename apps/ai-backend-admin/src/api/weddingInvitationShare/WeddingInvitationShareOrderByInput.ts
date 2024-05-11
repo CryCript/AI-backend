@@ -9,5 +9,5 @@ export type WeddingInvitationShareOrderByInput = {
   open?: SortOrder;
   updatedAt?: SortOrder;
   view?: SortOrder;
-  ID?: SortOrder;
+  weddingIdId?: SortOrder;
 };

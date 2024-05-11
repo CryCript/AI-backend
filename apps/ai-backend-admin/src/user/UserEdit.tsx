@@ -28,9 +28,9 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={InvitationTypeTitle} />
         </ReferenceArrayInput>
+        <TextInput label="Authentication Code" source="authenticationCode" />
         <TextInput label="Email" source="email" type="email" />
-        <TextInput label="First Name" source="firstName" />
-        <TextInput label="Last Name" source="lastName" />
+        <TextInput label="Full Name" source="fullName" />
         <PasswordInput label="Password" source="password" />
         <ReferenceArrayInput
           source="payments"

@@ -5,9 +5,9 @@ import { WeddingInvitationCreateNestedManyWithoutUsersInput } from "./WeddingInv
 
 export type UserCreateInput = {
   access?: InvitationTypeCreateNestedManyWithoutUsersInput;
+  authenticationCode?: string | null;
   email?: string | null;
-  firstName?: string | null;
-  lastName?: string | null;
+  fullName?: string | null;
   password: string;
   payments?: PaymentCreateNestedManyWithoutUsersInput;
   phone?: string | null;

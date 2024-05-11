@@ -63,7 +63,7 @@ export const WeddingInvitationShow = (props: ShowProps): React.ReactElement => {
         </ReferenceManyField>
         <ReferenceManyField
           reference="WeddingInvitationShare"
-          target="ID"
+          target="weddingIdId"
           label="Wedding Invitation Shares"
         >
           <Datagrid rowClick="show">

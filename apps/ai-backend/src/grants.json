@@ -26,6 +26,12 @@
   {
     "role": "admin",
     "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
     "action": "update:any",
     "attributes": "*"
   },
@@ -45,6 +51,12 @@
     "role": "vendor",
     "resource": "User",
     "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "delete:any",
     "attributes": "*"
   },
   {

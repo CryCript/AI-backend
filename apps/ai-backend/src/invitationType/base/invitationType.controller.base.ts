@@ -332,11 +332,11 @@ export class InvitationTypeControllerBase {
     const results = await this.service.findUser(params.id, {
       ...query,
       select: {
+        authenticationCode: true,
         createdAt: true,
         email: true,
-        firstName: true,
+        fullName: true,
         id: true,
-        lastName: true,
         phone: true,
         roles: true,
         status: true,
